@@ -15,25 +15,8 @@ class _MyAppState extends State<MyApp> {
       backgroundColor: Colors.grey.shade900,
       appBar: AppBar(
         title: Text("Chess Clock"),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.settings))
-        ],
-        bottom: TabBar(
-          tabs: [
-            Tab(child: Text("PRESETS"),),
-            Tab(child: Text("CUSTOM"),),
-          ],
-        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(5),
-        child: TabBarView(
-              children: [
-                DefaultClocks(),
-                Text("CUSTOM"),
-              ],
-            ),
-      ),
+      body: DefaultClocks(),
     );
   }
 }

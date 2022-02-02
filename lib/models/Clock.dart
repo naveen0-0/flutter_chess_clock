@@ -6,6 +6,7 @@ class Clock{
   Clock({ required this.name, required this.time, required this.increment });
 
   static List<Clock> clocks = [
+    Clock(name: "Bullet", time: Duration(seconds: 10), increment: Duration(seconds:0)),
     Clock(name: "Bullet", time: Duration(minutes: 1), increment: Duration(seconds:0)),
     Clock(name: "Bullet", time: Duration(minutes: 2), increment: Duration(seconds:1)),
     Clock(name: "Blitz", time: Duration(minutes: 3), increment: Duration(seconds:0)),
@@ -18,3 +19,6 @@ class Clock{
     Clock(name: "Clasical", time: Duration(minutes: 15), increment: Duration(seconds:15)),
   ];
 }
+
+
+
