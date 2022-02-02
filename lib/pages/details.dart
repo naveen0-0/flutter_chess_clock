@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
 
+
 class Details extends StatefulWidget {
   final Duration time;
   final Duration increment;
@@ -14,6 +15,7 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+
   bool gameStarted = false;
   bool gamePaused  = false;
   bool whitesMove = false;
@@ -36,12 +38,14 @@ class _DetailsState extends State<Details> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
     super.initState();
+    player = AudioPlayer();
   }
 
   @override
   void dispose() {
     whiteTimer?.cancel();
     blackTimer?.cancel();
+    player.dispose();
     super.dispose();
   }
 
@@ -67,7 +71,9 @@ class _DetailsState extends State<Details> {
         children: [
           GestureDetector(
             onTap: blacksMove
-                ? () {
+                ? () async {
+                    await player.setAsset('assets/audio/tap.mp3');
+                    player.play();
                     setState(() {
                       whitesMove = true;
                       blacksMove = false;
@@ -130,7 +136,9 @@ class _DetailsState extends State<Details> {
                   ),
                   GestureDetector(
                     onTap: whitesMove
-                        ? () {
+                        ? () async {
+                            await player.setAsset('assets/audio/tap.mp3');
+                            player.play();
                             setState(() {
                               whitesMove = false;
                               blacksMove = true;
